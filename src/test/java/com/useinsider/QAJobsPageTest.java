@@ -31,9 +31,8 @@ public class QAJobsPageTest extends BaseTest {
         qaJobsPage.openQaJobsUrl();
         qaJobsPage.clickSeeAllQaJobsButton();
         qaJobsPage.clickIstanbulOption();
-        qaJobsPage.clickViewRole();
-        System.out.println(driver.getCurrentUrl());
-        assertTrue(driver.getCurrentUrl().contains("lever.co"), "The current URL does not contain 'lever.co'.");
+        String newUrl = qaJobsPage.getUrlOfNewTab();
+        assertTrue(newUrl.contains("lever.co"), "The current URL does not contain 'lever.co'.");
 
     }
 

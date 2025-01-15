@@ -3,7 +3,9 @@ package com.useinsider.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class QAJobsPage extends BasePage {
@@ -79,6 +81,25 @@ public class QAJobsPage extends BasePage {
     clickLocator(viewRoleButton);
     waitFor(10000);
     }
+
+    public String getUrlOfNewTab() {
+        String originalWindow = driver.getWindowHandle();
+
+        clickViewRole();
+
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(driver -> driver.getWindowHandles().size() > 1);
+
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(originalWindow)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
+        return driver.getCurrentUrl();
+    }
+
 
 }
 
