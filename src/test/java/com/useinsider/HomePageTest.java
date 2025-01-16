@@ -12,7 +12,8 @@ public class HomePageTest extends BaseTest {
     public void testHomePageIsLoaded () {
         HomePage homePage = new HomePage(driver);
 
-        assertTrue(homePage.isLanguageDropdownDisplayed());
+        assertTrue(homePage.isLanguageDropdownDisplayed(),"Home page is not loaded." );
+
     }
 
     @Test
@@ -20,6 +21,6 @@ public class HomePageTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         CareersPage careersPage = homePage.clickCareersLink();
 
-        assertTrue(careersPage.isCareersPageLoaded());
+        assertTrue(careersPage.isCareersPageLoaded(),"Careers page is not loaded.");
     }
 }

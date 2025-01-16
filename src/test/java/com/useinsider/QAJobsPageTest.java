@@ -10,7 +10,7 @@ public class QAJobsPageTest extends BaseTest {
         QAJobsPage qaJobsPage = new QAJobsPage(driver);
         qaJobsPage.openQaJobsUrl();
 
-        assertTrue(qaJobsPage.isQaJobsPageLoaded());
+        assertTrue(qaJobsPage.isQaJobsPageLoaded(), "QA Jobs Page is not loaded.");
 
     }
 
@@ -20,8 +20,8 @@ public class QAJobsPageTest extends BaseTest {
         qaJobsPage.openQaJobsUrl();
         qaJobsPage.clickSeeAllQaJobsButton();
         qaJobsPage.clickIstanbulOption();
-        assertTrue(qaJobsPage.checkJobListExists());
-        assertTrue(qaJobsPage.verifyJobDetails("Quality Assurance", "QA", "Quality Assurance", "Istanbul, Turkey"));
+        assertTrue(qaJobsPage.checkJobListExists(), "Job list does not exist.");
+        assertTrue(qaJobsPage.verifyJobDetails("Quality Assurance", "QA", "Quality Assurance", "Istanbul, Turkey"), "Job details don't match with filter");
 
     }
 
@@ -31,6 +31,7 @@ public class QAJobsPageTest extends BaseTest {
         qaJobsPage.openQaJobsUrl();
         qaJobsPage.clickSeeAllQaJobsButton();
         qaJobsPage.clickIstanbulOption();
+        qaJobsPage.clickViewRole();
         String newUrl = qaJobsPage.getUrlOfNewTab();
         assertTrue(newUrl.contains("lever.co"), "The current URL does not contain 'lever.co'.");
 

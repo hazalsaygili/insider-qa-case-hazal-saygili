@@ -85,8 +85,6 @@ public class QAJobsPage extends BasePage {
     public String getUrlOfNewTab() {
         String originalWindow = driver.getWindowHandle();
 
-        clickViewRole();
-
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(driver -> driver.getWindowHandles().size() > 1);
 
